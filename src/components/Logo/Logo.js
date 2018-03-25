@@ -1,7 +1,7 @@
 import React from 'react';
 import Tilt from 'react-tilt'
 import './Logo.css';
-import brain from './brain-100 (1).png';
+import brain from './brain-100.png';
 
 const Logo = () => {
   return (
