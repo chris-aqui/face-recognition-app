@@ -19,7 +19,7 @@ const particlesOptions = {
       value: 50,
       density: {
         enable: true,
-        value_area: 600
+        value_area: 800
       }
     }
   }
@@ -71,20 +71,28 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
+  onRouteChange = (route) => {
+    this.setState({route:route});
+  }
+
   render() {
     return (
       <div className="App">
        <Particles className='particles'
               params={particlesOptions}
             />
-      <Navigation />
+      <Navigation onRouteChange={this.onRouteChange}/>
       { this.state.route === 'signin'
-      ? <Signin />
+      ? <Signin onRouteChange={this.onRouteChange}/>
       : <div>
           <Logo />
           <Rank />
-          <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-          <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+          <ImageLinkForm
+          onInputChange={this.onInputChange}
+          onButtonSubmit={this.onButtonSubmit} />
+          <FaceRecognition
+          box={this.state.box}
+          imageUrl={this.state.imageUrl} />
       </div>
       }
       </div>
